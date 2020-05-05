@@ -8,7 +8,7 @@ function Trace {
 }
 
 function validateOwner {
-    currentFileOwner=$( find $FILE_NAME -printf '%u\n' )
+    currentFileOwner=$( stat $FILE_NAME -c %U )
     if [[ $currentFileOwner != $VALID_OWNER ]]
     then
         Trace "WARNING: " 
