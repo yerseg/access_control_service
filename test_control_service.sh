@@ -4,7 +4,7 @@ CONF=./conf
 FILE_FOR_TEST=test_file.txt
 RIGHT_PERMISSIONS=644
 
-touch FILE_FOR_TEST
+touch $FILE_FOR_TEST
 
 echo "$FILE_FOR_TEST:$RIGHT_PERMISSIONS:root:root" >> $CONF
 
