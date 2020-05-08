@@ -11,7 +11,7 @@ function validateOwner {
     currentFileOwner=$( stat $FILE_NAME -c %U )
     if [[ $currentFileOwner != $VALID_OWNER ]]
     then
-        trace "WARNING: " 
+        trace "ACCESS_CONTROL_SERVICE: WARNING! $FILE_NAME HAD GOT NOT A VALID OWNER ($currentFileOwner). CHANGED TO $VALID_OWNER" 
         chown $VALID_OWNER $FILE_NAME
     fi
 }
@@ -20,7 +20,7 @@ function validateGroup {
     currentFileGroup=$( stat $FILE_NAME -c %G )
     if [[ $currentFileGroup != $VALID_GROUP ]]
     then
-        trace "WARNING: " 
+        trace "ACCESS_CONTROL_SERVICE: WARNING! $FILE_NAME HAD GOT NOT A VALID GROUP ($currentFileGroup). CHANGED TO $VALID_GROUP" 
         chgrp $VALID_GROUP $FILE_NAME
     fi
 }
@@ -29,7 +29,7 @@ function validatePermissions {
     currentFilePermissions=$( stat $FILE_NAME -c %a )
     if [[ $currentFilePermissions != $VALID_PERM ]]
     then
-        trace "WARNING: " 
+        trace "ACCESS_CONTROL_SERVICE: WARNING! $FILE_NAME HAD GOT NOT A VALID PERMISSIONS ($currentFilePermissions). CHANGED TO $VALID_PERM"
         chmod $VALID_PERM $FILE_NAME
     fi
 }
