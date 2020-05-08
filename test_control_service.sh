@@ -16,6 +16,7 @@ function compareParameters {
 	else 
 		echo "Test Error"
 		echo "Got $2, when expect $3"
+	fi
 }
 
 # first test
