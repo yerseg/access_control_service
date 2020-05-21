@@ -1,7 +1,7 @@
 
-.TH Service (DAC) "May, 2020" "version 0.1" "Permission control service"
+.TH Service DAC "May, 2020" "version 0.1" "Permission control service"
 .SH NAME
-Service (DAC) \- Discretionary Access Control service
+Service DAC \- Discretionary Access Control service
 .SH DESCRIPTION
 This is a service that monitors the access rights of the most
 important system configuration files once a minute. If access
