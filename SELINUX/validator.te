@@ -1,0 +1,44 @@
+policy_module(checker,1.0)
+
+type validator_t;
+type validator_exec_t;
+
+require {
+	type kernel_t;
+	type bin_t;
+	type init_t;
+	type passwd_file_t;
+	type proc_t;
+	type validator_t;
+	type shadow_t;
+	class unix_stream_socket connectto;
+	class file { execute execute_no_trans getattr open read setattr };
+}
+
+init_daemon_domain(validator_t, validator_exec_t)
+
+#============= validator_t ==============
+
+#!!!! WARNING: 'bin_t' is a base type.
+allow validator_t bin_t:file { execute execute_no_trans };
+allow validator_t init_t:file { getattr open read };
+
+#!!!! The file '/run/systemd/journal/stdout' is mislabeled on your system.  
+#!!!! Fix with $ restorecon -R -v /run/systemd/journal/stdout
+allow validator_t kernel_t:unix_stream_socket connectto;
+allow validator_t passwd_file_t:file { getattr open read setattr };
+allow validator_t proc_t:file { getattr open read };
+allow validator_t shadow_t:file getattr;
+
+#============= validator_t ==============
+
+#!!!! WARNING: 'bin_t' is a base type.
+allow validator_t bin_t:file { execute execute_no_trans };
+allow validator_t init_t:file { getattr open read };
+
+#!!!! The file '/run/systemd/journal/stdout' is mislabeled on your system.  
+#!!!! Fix with $ restorecon -R -v /run/systemd/journal/stdout
+allow validator_t kernel_t:unix_stream_socket connectto;
+allow validator_t passwd_file_t:file { getattr open read setattr };
+allow validator_t proc_t:file { getattr open read };
+allow validator_t shadow_t:file getattr;
