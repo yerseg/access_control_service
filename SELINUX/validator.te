@@ -1,4 +1,4 @@
-policy_module(checker,1.0)
+policy_module(validator,1.0)
 
 type validator_t;
 type validator_exec_t;
