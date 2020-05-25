@@ -19,8 +19,8 @@ mkdir -p %{buildroot}/opt/access_control/
 mkdir -p %{buildroot}/etc/systemd/system/
 mkdir -p %{buildroot}/usr/share/man/man7/
 install -m 755 access_control %{buildroot}/opt/access_control/
-install -m 644 access_control.conf %{buildroot}/opt/access_control/
-#install -m 644 access_control.service %{buildroot}/etc/systemd/system/
+install -m 644 access_settings.conf %{buildroot}/opt/access_control/
+install -m 644 access_control.service %{buildroot}/etc/systemd/system/
 #install -m 644 access_control.gz %{buildroot}/usr/share/man/man7/
 
 %files

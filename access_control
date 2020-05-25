@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONF=./conf
+CONF=/opt/access_control/access_settings.conf
 IFS=":"
 
 function trace {
