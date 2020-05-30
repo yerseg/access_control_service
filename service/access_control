@@ -7,6 +7,10 @@ function trace {
     systemd-cat echo $1
 }
 
+if [ ! -f "$CONF" ]; then
+    trace "ACCESS_CONTROL_SERVICE: FILE $CONF DOES NOT EXIST"
+fi
+
 function validateOwner {
     currentFileOwner=$( stat $FILE_NAME -c %U )
     if [[ $currentFileOwner != $VALID_OWNER ]]
