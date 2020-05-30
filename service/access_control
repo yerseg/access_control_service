@@ -9,6 +9,7 @@ function trace {
 
 if [ ! -f "$CONF" ]; then
     trace "ACCESS_CONTROL_SERVICE: FILE $CONF DOES NOT EXIST"
+    exit 1
 fi
 
 function validateOwner {
