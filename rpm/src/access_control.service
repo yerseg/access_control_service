@@ -1,0 +1,14 @@
+[Unit]
+Description=access_control
+
+[Service]
+Type=simple
+PIDFile=/opt/access_control/service.pid
+User=root
+Group=root
+OOMScoreAdjust=-100
+Restart=always
+ExecStart=/opt/access_control/access_control
+
+[Install]
+WantedBy=multi-user.target
