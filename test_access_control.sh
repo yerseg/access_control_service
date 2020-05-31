@@ -1,13 +1,7 @@
 #!/bin/bash
 
-if [ $USER != 'root' ]
-then
-	echo 'You should use sudo to run tests'
-	exit 1
-fi
-
-CONF=./conf
-FILE_FOR_TEST=test_file.txt
+CONF=/opt/access_control/access_settings.conf
+FILE_FOR_TEST=~/test_file.txt
 RIGHT_PERMISSIONS=644
 DELAY=60 #sec
 
