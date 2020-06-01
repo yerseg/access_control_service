@@ -2,6 +2,10 @@
 
 CONF=/etc/access_control.conf
 IFS=":"
+TIMEOUT=60
+PID_FILE=/opt/access_control/access_control.pid
+
+echo $$ > $PID_FILE
 
 function trace {
     systemd-cat echo $1
@@ -66,5 +70,5 @@ while true
 do
     trace "SERVICE START"
     wait && service
-    sleep 1 &
+    sleep $TIMEOUT &
 done
