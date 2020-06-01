@@ -1,0 +1,43 @@
+policy_module(access_control, 1.0)
+
+########################################
+#
+# Declarations
+#
+
+require {
+        type kernel_t;
+	type bin_t;
+	type init_t;
+	type passwd_file_t;
+	type proc_t;
+	type shadow_t;
+	type access_control_t;
+	type proc_t;
+	class file { open read getattr setattr };
+}
+
+type access_control_t;
+type access_control_exec_t;
+
+init_daemon_domain(access_control_t, access_control_exec_t)
+
+permissive access_control_t;
+
+########################################
+#
+# access_control local policy
+#
+
+allow access_control_t bin_t:file { execute execute_no_trans };
+allow access_control_t init_t:file { getattr open read };
+
+allow access_control_t passwd_file_t:file { getattr setattr };
+allow access_control_t proc_t:file { open read getattr setattr };
+allow access_control_t shadow_t:file { getattr setattr };
+
+domain_use_interactive_fds(access_control_t)
+
+files_read_etc_files(access_control_t)
+
+miscfiles_read_localization(access_control_t)
