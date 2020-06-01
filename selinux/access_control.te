@@ -14,7 +14,6 @@ require {
 	type shadow_t;
 	type access_control_t;
 	type proc_t;
-	type etc_t;
 	class unix_stream_socket connectto;
 	class file { open read getattr setattr };
 }
@@ -31,9 +30,9 @@ permissive access_control_t;
 # access_control local policy
 #
 
-allow checker_t kernel_t:unix_stream_socket connectto;
+allow access_control_t kernel_t:unix_stream_socket connectto;
 
-allow access_control_t bin_t:file { execute execute_no_trans };
+allow access_control_t bin_t:file { setattr execute execute_no_trans };
 allow access_control_t init_t:file { getattr open read };
 
 allow access_control_t etc_t:file { open read setattr getattr };
