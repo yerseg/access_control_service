@@ -1,0 +1,40 @@
+
+## <summary>policy for access_control</summary>
+
+########################################
+## <summary>
+##	Execute test_exec_t in the test domain.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`test_domtrans',`
+	gen_require(`
+		type access_control_t, access_control_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, access_control_exec_t, access_control_t)
+')
+
+######################################
+## <summary>
+##	Execute test in the caller domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`access_control_exec',`
+	gen_require(`
+		type access_control_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	can_exec($1, access_control_exec_t)
+')
