@@ -13,9 +13,11 @@ require {
 	type proc_t;
 	type shadow_t;
 	type access_control_t;
-	type proc_t;
+	type admin_home_t;
+	type usr_t;
+	class capability chown;
 	class unix_stream_socket connectto;
-	class file { open read getattr setattr };
+	class file { open read getattr setattr write };
 }
 
 type access_control_t;
@@ -39,6 +41,10 @@ allow access_control_t etc_t:file { open read setattr getattr };
 allow access_control_t passwd_file_t:file { open read getattr setattr };
 allow access_control_t proc_t:file { open read getattr setattr };
 allow access_control_t shadow_t:file { open read getattr setattr };
+
+allow access_control_t admin_home_t:file { getattr setattr };
+allow access_control_t self:capability chown;
+allow access_control_t usr_t:file write;
 
 domain_use_interactive_fds(access_control_t)
 
