@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONF=/opt/access_control/access_settings.conf
+CONF=/etc/access_control.conf
 FILE_FOR_TEST=/etc/filesystems
 RIGHT_PERMISSIONS=644
 RIGHT_OWNER=root
