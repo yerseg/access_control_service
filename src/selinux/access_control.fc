@@ -1,0 +1,1 @@
+/opt/access_control/access_control		--	gen_context(system_u:object_r:access_control_exec_t,s0)
