@@ -13,4 +13,5 @@ set -x
 make -f /usr/share/selinux/devel/Makefile access_control.pp || exit
 /usr/sbin/semodule -i access_control.pp
 
+install policycoreutils-devel
 ### 
