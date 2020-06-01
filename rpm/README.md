@@ -1,5 +1,5 @@
 ### Создание RPM пакета
-sudo yum install @development-tools rpmdev* rpm-sign
+0. `sudo yum install @development-tools rpmdev* rpm-sign`
 1. `cd ~`
 2. `rpmdev-setuptree`
 3. `cd ~/rpmbuild/SOURCES`
