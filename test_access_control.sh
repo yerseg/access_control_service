@@ -1,15 +1,17 @@
 #!/bin/bash
 
 CONF=/etc/access_control.conf
-FILE_FOR_TEST=/etc/filesystems
-RIGHT_PERMISSIONS=644
-RIGHT_OWNER=root
-RIGHT_GROUP=root
-DELAY=60 #sec
+
+FILE_FOR_TEST=~/test_file
+DELAY=61 #sec
 
 touch $FILE_FOR_TEST
 
-echo "$FILE_FOR_TEST:$RIGHT_PERMISSIONS:root:root" >> $CONF
+RIGHT_PERMISSIONS=$(stat -c %a $FILE_FOR_TEST)
+RIGHT_OWNER=$(stat -c %U $FILE_FOR_TEST)
+RIGHT_GROUP=$(stat -c %G $FILE_FOR_TEST)
+
+echo "$FILE_FOR_TEST:$RIGHT_PERMISSIONS:$RIGHT_OWNER:$RIGHT_GROUP" >> $CONF
 
 function compareParameters {
 	if [[ $2 == $3 ]]

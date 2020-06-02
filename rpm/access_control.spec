@@ -53,22 +53,13 @@ install -m 644 access_control.service %{buildroot}/etc/systemd/system/
 install -m 644 access_control.7.gz %{buildroot}%{_mandir}/man7/
 
 %post
-%{_sbindir}/semodule -i %{name}.pp 
-if %{_sbindir}/selinuxenabled ; then
-    %{_sbindir}/load_policy
-    %relabel_files
-fi;
-exit 0
+%{_sbindir}/semodule -i %{_datadir}/selinux/%{name}.pp
+/sbin/fixfiles -R %{name} restore
 
 %postun
-if [ $1 -eq 0 ]; then
-    %{_sbindir}/semodule -n -r %{name}
-    if %{_sbindir}/selinuxenabled ; then
-       %{_sbindir}/load_policy
-       %relabel_files
-    fi;
-fi;
-exit 0
+if [ $1 -eq 0 ]; then 
+	%{_sbindir}/semodule -n -r %{name}
+fi
 
 %files
 /opt/access_control/*
