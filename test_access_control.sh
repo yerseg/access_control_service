@@ -1,7 +1,6 @@
 #!/bin/bash
 
 CONF=/etc/access_control.conf
-
 FILE_FOR_TEST=~/test_file
 DELAY=61 #sec
 
