@@ -31,8 +31,6 @@ Students of group B17-505 of NRNU MEPhI
 8. `cd ../SPECS`
 9. `cp path-to-project/rpm/access_control.spec ./`
 10. `rpmbuild -ba access_control.spec`
-11. ?`cd ../RPMS/noarch/`
-12. ? `sudo rpm -i access_control_1.0-1.el7.noarch.rpm`
 
 ### Sign the package
 
