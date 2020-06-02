@@ -1,0 +1,6 @@
+[mephi_project]
+name=mephi_project
+baseurl=http://localhost/mephi_project
+enabled=1
+gpgcheck=1
+gpgkey=http://localhost/mephi_project/RPM-GPG-KEY-Evs-Pes
