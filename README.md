@@ -37,13 +37,13 @@ Students of group B17-505 of NRNU MEPhI
 1. `gpg2 --gen-key`
 2. `gpg2 --export -a '{name}' > ~/rpmbuild/RPM-GPG-KEY-{name}`
 3. In `~/.rpmmacros` add line `%_gpg_name {name}`
-4. `rpm --addsign ~/rpmbuild/RPMS/noarch/access_control_1.0-1.el7.noarch.rpm`
+4. `rpm --addsign ~/rpmbuild/RPMS/noarch/access_control-1.0-1.el7.noarch.rpm`
 
 ### Create a repository and install the package
 
 1. `sudo yum install createrepo`
 2. `sudo mkdir -p /var/www/html/mephi_project`
-3. `sudo cp ~/rpmbuild/RPMS/noarch/access_control_1.0-1.el7.noarch.rpm /var/www/html/mephi_project`
+3. `sudo cp ~/rpmbuild/RPMS/noarch/access_control-1.0-1.el7.noarch.rpm /var/www/html/mephi_project`
 4. `sudo cp ~/rpmbuild/RPM-GPG-KEY-{your-name} /var/www/html/mephi_project`
 5. `sudo createrepo -v /var/www/html/mephi_project`
 6. Change gpg-key name in `mephi_project.repo`
