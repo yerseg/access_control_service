@@ -23,34 +23,32 @@ function compareParameters {
 }
 
 chmod 777 $FILE_FOR_TEST 
+echo "Need to wait $DELAY sec"
 CONTROL_SERVICE_PID=$(pgrep access_control)
-sleep 2
+sleep $DELAY
 changedPermissions=$(stat -c %a $FILE_FOR_TEST)
 compareParameters "Basic test permissions" $changedPermissions $RIGHT_PERMISSIONS
 
 chown $USER $FILE_FOR_TEST 
-sleep 2
+echo "Need to wait $DELAY sec"
+sleep $DELAY
 changedOwner=$(stat -c %U $FILE_FOR_TEST)
 compareParameters "Basic test owner" $changedOwner $RIGHT_OWNER
 
 chgrp $USER $FILE_FOR_TEST 
-sleep 2
+echo "Need to wait $DELAY sec"
+sleep $DELAY
 changedGrp=$(stat -c %G $FILE_FOR_TEST)
 compareParameters "Basic test group" $changedGrp $RIGHT_GROUP
 
 chmod 777 $FILE_FOR_TEST 
+echo "Need to wait $DELAY sec"
 kill -USR1 $CONTROL_SERVICE_PID
-sleep 2
+sleep $DELAY
 changedPermissions=$(stat -c %a $FILE_FOR_TEST)
 compareParameters "SIGUSR1 test" $changedPermissions $RIGHT_PERMISSIONS
 
-chmod 777 $FILE_FOR_TEST
-echo "Need to wait $DELAY sec"
-sleep $DELAY
-changedPermissions=$(stat -c %a $FILE_FOR_TEST)
-compareParameters "Periodic work test" $changedPermissions $RIGHT_PERMISSIONS
-
-echo "If you see OK for 5 times then all work well"
+echo "If you see OK for 4 times then all work well"
 
 rm $FILE_FOR_TEST
 
