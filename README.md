@@ -20,7 +20,6 @@ Students of group B17-505 of NRNU MEPhI
 0. Installation of needed packages   
    `sudo yum install @development-tools rpmdev* rpm-sign`  
    `sudo yum install install policycoreutils-devel`
-
 1. `cd ~`
 2. `rpmdev-setuptree`
 3. `cd ~/rpmbuild/SOURCES`
